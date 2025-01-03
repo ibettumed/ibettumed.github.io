@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ibettu</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Lexend:wght@400;700&display=swap');
+
+        body {
+            font-family: 'Lexend', Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            background-color: #ffffff;
+        }
+        .logo {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            font-size: 24px;
+            font-weight: 900;
+        }
+        .container {
+            margin-top: 15%;
+        }
+        .button-container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+ 
+        .button img {
+            width: 150px;
+            height: auto;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+        .button img:hover {
+            transform: scale(1.1);
+        }
+.choose-container {
+            display: flex;
+            justify-content: center;
+            gap: 100px;
+        }
+ .choose img {
+            width: 75px;
+            height: auto;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+        .choose img:hover {
+            transform: scale(1.1);
+        }
+        .back-button {
+            position: absolute;
+            bottom: 60px;
+            left: 10px;
+            padding: 10px 50px;
+            font-size: 16px;
+            border: none;
+            border-radius: 50px;
+            background-color: #1F284D;
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .back-button:hover {
+            background-color: #3a4b78;
+        }
+        .read-button {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+        .read-button img {
+            width: 60px;
+            height: 60px;
+        }
+        .footer-image {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 50px;
+            background-image: url('footer-image.png');
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+    </style>
+</head>
+<body>
+    <div class="logo">Ibettu</div>
+
+    <!-- Page 1: Language Selection -->
+    <div class="container" id="page1">
+        <button class="back-button" style="display: none;">Zurück</button>
+        <button class="read-button" onclick="readAloud('Wählen eine Sprache: Deutsch, Kroatisch oder Englisch. Choose a language: German, Croatian, or English. Odaberite jezik: njemački, hrvatski ili engleski.')">
+            <img src="sound-icon.svg" alt="Read Aloud">
+        </button>
+        <div class="button-container">
+            <div class="button" onclick="goToPage2('de')">
+                <img src="german-icon.svg" alt="Deutsch">
+            </div>
+            <div class="button" onclick="goToPage2('hr')">
+                <img src="croatian-icon.svg" alt="Hrvatski">
+            </div>
+            <div class="button" onclick="goToPage2('en')">
+                <img src="english-icon.svg" alt="English">
+            </div>
+        </div>
+    </div>
+
+    <!-- Page 2: Simple Language Choice -->
+    <div class="container" id="page2" style="display: none;">
+        <button class="back-button" id="backButton" onclick="stopAndGoBackToPage1()">Zurück</button>
+        <button class="read-button" onclick="readAloud(document.getElementById('message').innerText)">
+            <img src="sound-icon.svg" alt="Read Aloud">
+        </button>
+        <h1 id="message"></h1>
+        <div class="choose-container">
+            <div class="choose" onclick="goToPage3('simple')">
+                <img src="simple-icon.svg" alt="Simple">
+            </div>
+            <div class="choose" onclick="goToPage3('regular')">
+                <img src="regular-icon.svg" alt="Regular">
+            </div>
+        </div>
+    </div>
+
+    <!-- Page 3: Final Information -->
+    <div class="container" id="page3" style="display: none;">
+        <button class="back-button" onclick="stopAndGoBackToPage2()">Zurück</button>
+        <button class="read-button" onclick="readAloud(document.getElementById('finalText').innerText)">
+            <img src="sound-icon.svg" alt="Read Aloud">
+        </button>
+        <h1 id="finalMessage"></h1>
+        <p id="finalText"></p>
+    </div>
+
+    <div class="footer-image"></div>
+
+    <script>
+        let speechSynthesisUtterance;
+
+        function goToPage2(selectedLanguage) {
+            language = selectedLanguage;
+            document.getElementById('page1').style.display = 'none';
+            document.getElementById('page2').style.display = 'block';
+
+            const backButton = document.getElementById('backButton');
+            const message = document.getElementById('message');
+
+            if (language === 'de') {
+                backButton.innerText = 'Zurück';
+                message.innerText = 'Möchten Sie leichte Sprache?';
+            } else if (language === 'hr') {
+                backButton.innerText = 'Natrag';
+                message.innerText = 'Želite li jednostavan jezik?';
+            } else if (language === 'en') {
+                backButton.innerText = 'Back';
+                message.innerText = 'Would you like simple language?';
+            }
+        }
+
+        function goToPage3(choice) {
+            document.getElementById('page2').style.display = 'none';
+            document.getElementById('page3').style.display = 'block';
+
+            const finalMessage = document.getElementById('finalMessage');
+            const finalText = document.getElementById('finalText');
+
+            const content = {
+                de: {
+                    simple: 'Ibumetin hilft bei Schmerzen und Fieber.',
+                    regular: 'Ibumetin forte 400 mg enthält Ibuprofen.'
+                },
+                hr: {
+                    simple: 'Ibumetin pomaže kod bolova i vrućice.',
+                    regular: 'Ibumetin forte 400 mg sadrži ibuprofen.'
+                },
+                en: {
+                    simple: 'Ibumetin helps with pain and fever.',
+                    regular: 'Ibumetin forte 400 mg contains ibuprofen.'
+                }
+            };
+
+            finalMessage.innerText = language === 'de' ? 'Informationen:' : language === 'hr' ? 'Informacije:' : 'Information:';
+            finalText.innerText = content[language][choice];
+        }
+
+        function stopAndGoBackToPage1() {
+            stopSpeech();
+            document.getElementById('page2').style.display = 'none';
+            document.getElementById('page1').style.display = 'block';
+        }
+
+        function stopAndGoBackToPage2() {
+            stopSpeech();
+            document.getElementById('page3').style.display = 'none';
+            document.getElementById('page2').style.display = 'block';
+        }
+
+        function readAloud(text) {
+            stopSpeech();
+            speechSynthesisUtterance = new SpeechSynthesisUtterance(text);
+            if (!language) {
+                speechSynthesisUtterance.text = 'Wählen eine Sprache: Deutsch, Kroatisch oder Englisch. Choose a language: German, Croatian, or English. Odaberite jezik: njemački, hrvatski ili engleski.';
+                speechSynthesisUtterance.lang = 'de-DE';
+            } else {
+                speechSynthesisUtterance.lang = language === 'de' ? 'de-DE' : language === 'hr' ? 'hr-HR' : 'en-US';
+            }
+            window.speechSynthesis.speak(speechSynthesisUtterance);
+        }
+
+        function stopSpeech() {
+            if (window.speechSynthesis && window.speechSynthesis.speaking) {
+                window.speechSynthesis.cancel();
+            }
+        }
+    </script>
+</body>
+</html>
