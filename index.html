@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <title>Ibettu</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Lexend:wght@400;700&display=swap');
@@ -14,51 +14,63 @@
             padding: 0;
             background-color: #ffffff;
         }
+
         .logo {
             position: absolute;
             top: 10px;
             left: 10px;
-            font-size: 24px;
+            font-size: 20px;
             font-weight: 900;
         }
+
         .container {
-            margin-top: 15%;
+            margin-top: 20%;
+            padding: 0 10px;
         }
+
         .button-container {
             display: flex;
-            justify-content: center;
+            flex-direction: column;
+            align-items: center;
             gap: 20px;
+            padding: 10px 0;
         }
- 
+
         .button img {
-            width: 150px;
+            width: 120px;
             height: auto;
             cursor: pointer;
             transition: transform 0.3s;
         }
+
         .button img:hover {
             transform: scale(1.1);
         }
-.choose-container {
+
+        .choose-container {
             display: flex;
             justify-content: center;
-            gap: 100px;
+            gap: 40px;
+            padding: 20px 0;
         }
- .choose img {
-            width: 75px;
+
+        .choose img {
+            width: 60px;
             height: auto;
             cursor: pointer;
             transition: transform 0.3s;
         }
+
         .choose img:hover {
             transform: scale(1.1);
         }
+
         .back-button {
             position: absolute;
             bottom: 60px;
             left: 10px;
-            padding: 10px 50px;
-            font-size: 16px;
+            padding: 10px 30px;
+            font-size: 14px;
             border: none;
             border-radius: 50px;
             background-color: #1F284D;
@@ -66,9 +78,11 @@
             cursor: pointer;
             transition: background-color 0.3s;
         }
+
         .back-button:hover {
             background-color: #3a4b78;
         }
+
         .read-button {
             position: absolute;
             top: 10px;
@@ -77,10 +91,12 @@
             border: none;
             cursor: pointer;
         }
+
         .read-button img {
-            width: 60px;
-            height: 60px;
+            width: 50px;
+            height: 50px;
         }
+
         .footer-image {
             position: absolute;
             bottom: 0;
@@ -90,6 +106,12 @@
             background-image: url('footer-image.png');
             background-size: cover;
             background-repeat: no-repeat;
+        }
+
+        h1, p {
+            font-size: 18px;
+            margin: 10px 0;
+            padding: 0 10px;
         }
     </style>
 </head>
@@ -146,6 +168,7 @@
 
     <script>
         let speechSynthesisUtterance;
+        let language;
 
         function goToPage2(selectedLanguage) {
             language = selectedLanguage;
@@ -225,3 +248,4 @@
     </script>
 </body>
 </html>
+
