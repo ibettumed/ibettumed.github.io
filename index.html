@@ -4,147 +4,58 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ibettu</title>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Lexend:wght@400;700&display=swap');
-
-        body {
-            font-family: 'Lexend', Arial, sans-serif;
-            text-align: center;
-            margin: 0;
-            padding: 0;
-            background-color: #ffffff;
-        }
-        .logo {
-            position: absolute;
-            top: 10px;
-            left: 10px;
-            font-size: 24px;
-            font-weight: 900;
-        }
-        .container {
-            margin-top: 15%;
-        }
-        .button-container {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-        }
- 
-        .button img {
-            width: 150px;
-            height: auto;
-            cursor: pointer;
-            transition: transform 0.3s;
-        }
-        .button img:hover {
-            transform: scale(1.1);
-        }
-.choose-container {
-            display: flex;
-            justify-content: center;
-            gap: 100px;
-        }
- .choose img {
-            width: 75px;
-            height: auto;
-            cursor: pointer;
-            transition: transform 0.3s;
-        }
-        .choose img:hover {
-            transform: scale(1.1);
-        }
-        .back-button {
-            position: absolute;
-            bottom: 60px;
-            left: 10px;
-            padding: 10px 50px;
-            font-size: 16px;
-            border: none;
-            border-radius: 50px;
-            background-color: #1F284D;
-            color: white;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
-        .back-button:hover {
-            background-color: #3a4b78;
-        }
-        .read-button {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            background: none;
-            border: none;
-            cursor: pointer;
-        }
-        .read-button img {
-            width: 60px;
-            height: 60px;
-        }
-        .footer-image {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            height: 50px;
-            background-image: url('footer-image.png');
-            background-size: cover;
-            background-repeat: no-repeat;
-        }
-    </style>
 </head>
-<body>
-    <div class="logo">Ibettu</div>
+<body style="font-family: Arial, sans-serif; text-align: center; margin: 0; padding: 0; background-color: #ffffff;">
+    <div style="position: absolute; top: 10px; left: 10px; font-size: 24px; font-weight: 900;">Ibettu</div>
 
     <!-- Page 1: Language Selection -->
-    <div class="container" id="page1">
-        <button class="back-button" style="display: none;">Zurück</button>
-        <button class="read-button" onclick="readAloud('Wählen eine Sprache: Deutsch, Kroatisch oder Englisch. Choose a language: German, Croatian, or English. Odaberite jezik: njemački, hrvatski ili engleski.')">
-            <img src="sound-icon.svg" alt="Read Aloud">
+    <div id="page1" style="margin-top: 15%;">
+        <button onclick="readAloud('Wählen eine Sprache: Deutsch, Kroatisch oder Englisch. Choose a language: German, Croatian, or English. Odaberite jezik: njemački, hrvatski ili engleski.')" 
+                style="position: absolute; top: 10px; right: 10px; background: none; border: none; cursor: pointer;">
+            <img src="sound-icon.svg" alt="Read Aloud" style="width: 60px; height: 60px;">
         </button>
-        <div class="button-container">
-            <div class="button" onclick="goToPage2('de')">
-                <img src="german-icon.svg" alt="Deutsch">
+        <div style="text-align: center;">
+            <div onclick="goToPage2('de')" style="margin-bottom: 20px;">
+                <img src="german-icon.svg" alt="Deutsch" style="width: 150px; height: auto; cursor: pointer;">
             </div>
-            <div class="button" onclick="goToPage2('hr')">
-                <img src="croatian-icon.svg" alt="Hrvatski">
+            <div onclick="goToPage2('hr')" style="margin-bottom: 20px;">
+                <img src="croatian-icon.svg" alt="Hrvatski" style="width: 150px; height: auto; cursor: pointer;">
             </div>
-            <div class="button" onclick="goToPage2('en')">
-                <img src="english-icon.svg" alt="English">
+            <div onclick="goToPage2('en')">
+                <img src="english-icon.svg" alt="English" style="width: 150px; height: auto; cursor: pointer;">
             </div>
         </div>
     </div>
 
     <!-- Page 2: Simple Language Choice -->
-    <div class="container" id="page2" style="display: none;">
-        <button class="back-button" id="backButton" onclick="stopAndGoBackToPage1()">Zurück</button>
-        <button class="read-button" onclick="readAloud(document.getElementById('message').innerText)">
-            <img src="sound-icon.svg" alt="Read Aloud">
+    <div id="page2" style="display: none; margin-top: 15%;">
+        <button id="backButton" onclick="stopAndGoBackToPage1()" style="position: absolute; bottom: 60px; left: 10px; padding: 10px 50px; font-size: 16px; border: none; border-radius: 50px; background-color: #1F284D; color: white; cursor: pointer;">Zurück</button>
+        <button onclick="readAloud(document.getElementById('message').innerText)" style="position: absolute; top: 10px; right: 10px; background: none; border: none; cursor: pointer;">
+            <img src="sound-icon.svg" alt="Read Aloud" style="width: 60px; height: 60px;">
         </button>
         <h1 id="message"></h1>
-        <div class="choose-container">
-            <div class="choose" onclick="goToPage3('simple')">
-                <img src="simple-icon.svg" alt="Simple">
+        <div style="text-align: center;">
+            <div onclick="goToPage3('simple')" style="margin-bottom: 20px;">
+                <img src="simple-icon.svg" alt="Simple" style="width: 75px; height: auto; cursor: pointer;">
             </div>
-            <div class="choose" onclick="goToPage3('regular')">
-                <img src="regular-icon.svg" alt="Regular">
+            <div onclick="goToPage3('regular')">
+                <img src="regular-icon.svg" alt="Regular" style="width: 75px; height: auto; cursor: pointer;">
             </div>
         </div>
     </div>
 
     <!-- Page 3: Final Information -->
-    <div class="container" id="page3" style="display: none;">
-        <button class="back-button" onclick="stopAndGoBackToPage2()">Zurück</button>
-        <button class="read-button" onclick="readAloud(document.getElementById('finalText').innerText)">
-            <img src="sound-icon.svg" alt="Read Aloud">
+    <div id="page3" style="display: none; margin-top: 15%;">
+        <button onclick="stopAndGoBackToPage2()" style="position: absolute; bottom: 60px; left: 10px; padding: 10px 50px; font-size: 16px; border: none; border-radius: 50px; background-color: #1F284D; color: white; cursor: pointer;">Zurück</button>
+        <button onclick="readAloud(document.getElementById('finalText').innerText)" style="position: absolute; top: 10px; right: 10px; background: none; border: none; cursor: pointer;">
+            <img src="sound-icon.svg" alt="Read Aloud" style="width: 60px; height: 60px;">
         </button>
         <h1 id="finalMessage"></h1>
-        <p id="finalText"></p>
+        <p id="finalText" style="text-align: left; margin: 0 10%;"></p>
     </div>
 
-    <div class="footer-image"></div>
-
     <script>
+        let language;
         let speechSynthesisUtterance;
 
         function goToPage2(selectedLanguage) {
@@ -177,15 +88,20 @@
             const content = {
                 de: {
                     simple: 'Ibumetin hilft bei Schmerzen und Fieber.',
-                    regular: 'Ibumetin forte 400 mg enthält Ibuprofen.'
+                    regular: `Was ist Ibettu und wofür wird es angewendet?
+Eine Ibettu forte 400 mg - Filmtablette enthält als Wirkstoff 400 mg Ibuprofen.
+Ibuprofen gehört zu einer Gruppe von Arzneimitteln, die man nicht-steroidale entzündungshemmende Arzneimittel (nicht-steroidale Analgetika/Antirheumatika (NSAR)) nennt. Diese Arzneimittel haben schmerzstillende, entzündungshemmende und fiebersenkende Wirkung.
+Ibettu wird angewendet ...
+
+[Rest des Textes hier einfügen]`
                 },
                 hr: {
                     simple: 'Ibumetin pomaže kod bolova i vrućice.',
-                    regular: 'Ibumetin forte 400 mg sadrži ibuprofen.'
+                    regular: 'Langer regulärer kroatischer Text.'
                 },
                 en: {
                     simple: 'Ibumetin helps with pain and fever.',
-                    regular: 'Ibumetin forte 400 mg contains ibuprofen.'
+                    regular: 'Long regular English text.'
                 }
             };
 
@@ -225,4 +141,5 @@
     </script>
 </body>
 </html>
+
 
