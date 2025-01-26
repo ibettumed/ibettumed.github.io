@@ -167,7 +167,7 @@
             }
         }
 
-         function goToPage3(choice) {
+        function goToPage3(choice) {
             document.getElementById('page2').style.display = 'none';
             document.getElementById('page3').style.display = 'block';
 
@@ -176,19 +176,16 @@
 
             const content = {
                 de: {
-                    simple: 'Ibettu hilft bei Schmerzen und Fieber. Sie dürfen Ibettu nicht einnehmen, wenn Sie gegen Ibuprofen allergisch sind.',
-                    regular: `Was ist Ibettu und wofür wird es angewendet?
-Ibettu enthält Ibuprofen, ein Schmerzmittel. Es lindert Schmerzen und senkt Fieber. Lesen Sie die Packungsbeilage, bevor Sie es einnehmen.`
+                    simple: 'Ibumetin hilft bei Schmerzen und Fieber.',
+                    regular: 'Ibumetin forte 400 mg enthält Ibuprofen.'
                 },
                 hr: {
-                    simple: 'Ibettu pomaže kod boli i groznice. Ne uzimajte ako ste alergični na ibuprofen.',
-                    regular: `Što je Ibettu i za što se koristi?
-Ibettu sadrži ibuprofen, lijek protiv bolova. Ublažava bol i smanjuje temperaturu. Pažljivo pročitajte upute prije uzimanja.`
+                    simple: 'Ibumetin pomaže kod bolova i vrućice.',
+                    regular: 'Ibumetin forte 400 mg sadrži ibuprofen.'
                 },
                 en: {
-                    simple: 'Ibettu helps with pain and fever. Do not take it if you are allergic to ibuprofen.',
-                    regular: `What is Ibettu and what is it used for?
-Ibettu contains ibuprofen, a pain reliever. It reduces pain and fever. Read the leaflet before use.`
+                    simple: 'Ibumetin helps with pain and fever.',
+                    regular: 'Ibumetin forte 400 mg contains ibuprofen.'
                 }
             };
 
@@ -212,7 +209,7 @@ Ibettu contains ibuprofen, a pain reliever. It reduces pain and fever. Read the 
             stopSpeech();
             speechSynthesisUtterance = new SpeechSynthesisUtterance(text);
             if (!language) {
-                speechSynthesisUtterance.text = 'Wählen Sie eine Sprache: Deutsch, Kroatisch oder Englisch.';
+                speechSynthesisUtterance.text = 'Wählen eine Sprache: Deutsch, Kroatisch oder Englisch. Choose a language: German, Croatian, or English. Odaberite jezik: njemački, hrvatski ili engleski.';
                 speechSynthesisUtterance.lang = 'de-DE';
             } else {
                 speechSynthesisUtterance.lang = language === 'de' ? 'de-DE' : language === 'hr' ? 'hr-HR' : 'en-US';
