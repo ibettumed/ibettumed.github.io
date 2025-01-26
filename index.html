@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ibettu</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Lexend:wght@400;700&display=swap');
@@ -14,63 +14,51 @@
             padding: 0;
             background-color: #ffffff;
         }
-
         .logo {
             position: absolute;
             top: 10px;
             left: 10px;
-            font-size: 20px;
+            font-size: 24px;
             font-weight: 900;
         }
-
         .container {
-            margin-top: 20%;
-            padding: 0 10px;
+            margin-top: 15%;
         }
-
         .button-container {
             display: flex;
-            flex-direction: column;
-            align-items: center;
+            justify-content: center;
             gap: 20px;
-            padding: 10px 0;
         }
-
+ 
         .button img {
-            width: 120px;
+            width: 150px;
             height: auto;
             cursor: pointer;
             transition: transform 0.3s;
         }
-
         .button img:hover {
             transform: scale(1.1);
         }
-
-        .choose-container {
+.choose-container {
             display: flex;
             justify-content: center;
-            gap: 40px;
-            padding: 20px 0;
+            gap: 100px;
         }
-
-        .choose img {
-            width: 60px;
+ .choose img {
+            width: 75px;
             height: auto;
             cursor: pointer;
             transition: transform 0.3s;
         }
-
         .choose img:hover {
             transform: scale(1.1);
         }
-
         .back-button {
             position: absolute;
             bottom: 60px;
             left: 10px;
-            padding: 10px 30px;
-            font-size: 14px;
+            padding: 10px 50px;
+            font-size: 16px;
             border: none;
             border-radius: 50px;
             background-color: #1F284D;
@@ -78,11 +66,9 @@
             cursor: pointer;
             transition: background-color 0.3s;
         }
-
         .back-button:hover {
             background-color: #3a4b78;
         }
-
         .read-button {
             position: absolute;
             top: 10px;
@@ -91,12 +77,10 @@
             border: none;
             cursor: pointer;
         }
-
         .read-button img {
-            width: 50px;
-            height: 50px;
+            width: 60px;
+            height: 60px;
         }
-
         .footer-image {
             position: absolute;
             bottom: 0;
@@ -106,12 +90,6 @@
             background-image: url('footer-image.png');
             background-size: cover;
             background-repeat: no-repeat;
-        }
-
-        h1, p {
-            font-size: 18px;
-            margin: 10px 0;
-            padding: 0 10px;
         }
     </style>
 </head>
@@ -168,7 +146,6 @@
 
     <script>
         let speechSynthesisUtterance;
-        let language;
 
         function goToPage2(selectedLanguage) {
             language = selectedLanguage;
@@ -200,59 +177,7 @@
             const content = {
                 de: {
                     simple: 'Ibumetin hilft bei Schmerzen und Fieber.',
-                    regular: 'Klar, hier ist die überarbeitete Version, in der "Ibumetin" durch "Ibettu" ersetzt wurde:  
-
----
-
-1. Was ist Ibettu und wofür wird es angewendet?  
-Eine Ibettu forte 400 mg - Filmtablette enthält als Wirkstoff 400 mg Ibuprofen.  
-Ibuprofen gehört zu einer Gruppe von Arzneimitteln, die man nicht-steroidale entzündungshemmende Arzneimittel (nicht-steroidale Analgetika/Antirheumatika (NSAR)) nennt. Diese Arzneimittel haben schmerzstillende, entzündungshemmende und fiebersenkende Wirkung.  
-
-Ibettu wird angewendet  
-- zur Linderung von leichten bis mäßig starken Schmerzen (wie z. B. Kopfschmerzen, Zahnschmerzen und Regelschmerzen);  
-- zur Linderung von Schmerzen und Fieber bei Erkältungen.  
-
-Wenn Sie sich nach 3-4 Tagen nicht besser oder gar schlechter fühlen, wenden Sie sich an Ihren Arzt.  
-
----
-
-2. Was sollten Sie vor der Einnahme von Ibettu beachten?
-
-Ibettu darf nicht eingenommen werden,  
-- wenn Sie allergisch gegen Ibuprofen oder einen der in Abschnitt 6 genannten sonstigen Bestandteile dieses Arzneimittels sind.  
-- wenn Sie nach der Anwendung von Acetylsalicylsäure oder anderer ähnlicher Schmerzmittel (NSAR) jemals an Atemnot, Asthma, einer rinnenden Nase, Schwellungen oder Nesselausschlägen gelitten haben.  
-- wenn Sie an Gehirnblutungen (zerebrovaskulärer Blutung) oder anderen aktiven Blutungen leiden.  
-- wenn Sie ein Magen-/Dünndarm-Geschwür oder eine Magen-/Darm-Blutung haben (oder zwei oder mehr Episoden solcher hatten).  
-- wenn Sie bei einer früheren Einnahme von NSAR Magen-/Darm-Blutungen oder einen Durchbruch (Perforation) hatten.  
-- wenn Sie schwere Leber-, Nieren- oder Herzinsuffizienz (schwere Funktionsstörungen) haben.  
-- wenn Sie an einer ungeklärten Störung der Blutbildung leiden.  
-- wenn Sie an einer Tendenz zu unkontrollierten Blutungen (Hämorrhagien) oder Störungen der Blutgerinnung (Koagulation) leiden.  
-- wenn Sie an schwerer Dehydration (Austrocknung des Körpers verursacht durch Erbrechen, Durchfall oder unzureichender Flüssigkeitsaufnahme) leiden.  
-- wenn Sie in den letzten drei Monaten der Schwangerschaft sind (siehe Abschnitt Schwangerschaft, Stillzeit und Zeugungs-/Gebärfähigkeit).  
-- von Kindern unter 6 Jahren oder 20 kg Körpergewicht.  
-
----
-
-Warnhinweise und Vorsichtsmaßnahmen 
-Bitte sprechen Sie mit Ihrem Arzt oder Apotheker, bevor Sie Ibettu einnehmen,  
-- wenn Sie einen systemischen Lupus erythematodes (SLE) oder eine Mischkollagenose (mixed connective tissue disease; Erkrankungen des Immunsystems, die Gelenkschmerzen, Hautausschläge und Fieber verursachen) haben.  
-- wenn Sie eine vererbte Störung der Blutbildung (akute intermittierende Porphyrie) oder Probleme mit Ihrer Blutgerinnung haben.  
-- wenn Sie eine Darmerkrankung (ulzerative Colitis oder Morbus Crohn) haben oder jemals gehabt haben.  
-- wenn Sie jemals Bluthochdruck und/oder eine Herzinsuffizienz gehabt haben.  
-- wenn Sie eine verminderte Nierenfunktion haben. Bei Kindern und Jugendlichen mit Flüssigkeitsmangel (Dehydrierung) besteht das Risiko einer Nierenfunktionsstörung.  
-- wenn Sie Leberprobleme haben.  
-- wenn Sie sich vor Kurzem einer großen Operation unterzogen haben.  
-- wenn Sie Asthma oder eine allergische Erkrankung haben oder gehabt haben, da Atemnot auftreten kann.  
-- wenn Sie an Heuschnupfen, Nasenpolypen oder chronischen obstruktiven Atemwegserkrankungen leiden, da ein erhöhtes Risiko für allergische Reaktionen besteht. Die allergischen Reaktionen können als Asthma-Attacken (sogenanntes Analgetika-Asthma), Schwellungen der Haut (Quincke-Ödem) oder Hautausschlag auftreten.  
-- wenn Sie andere Arzneimittel einnehmen, die das Risiko für Geschwürbildung oder Blutungen erhöhen, wie oral eingenommene Corticosteroide, Arzneimittel zur Blutverdünnung (wie Warfarin), selektive Serotonin-Wiederaufnahme-Hemmer (Arzneimittel gegen Depressionen) oder Gerinnungshemmer wie Acetylsalicylsäure.  
-
-Durch Anwendung der minimal wirksamen Dosis über die kürzeste Zeit wird das Vorkommen von Nebenwirkungen minimiert. Bei älteren Patienten besteht ein erhöhtes Risiko für Nebenwirkungen.  
-
-Die Einnahme von Ibettu in Kombination mit anderen NSAR, einschließlich Cyclooxygenase-2-spezifischen Hemmern, kann das Risiko für Nebenwirkungen erhöhen und sollte vermieden werden (siehe Abschnitt „Einnahme von Ibettu zusammen mit anderen Arzneimitteln“).  
-
----
-
-Falls noch etwas angepasst werden soll, lass es mich wissen! 😊'
+                    regular: 'Ibumetin forte 400 mg enthält Ibuprofen.'
                 },
                 hr: {
                     simple: 'Ibumetin pomaže kod bolova i vrućice.',
