@@ -4,13 +4,101 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ibettu</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Lexend:wght@400;700&display=swap');
+
+        body {
+            font-family: 'Lexend', Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            background-color: #ffffff;
+        }
+        .logo {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            font-size: 24px;
+            font-weight: 900;
+        }
+        .container {
+            margin-top: 15%;
+        }
+        .button-container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+ 
+        .button img {
+            width: 150px;
+            height: auto;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+        .button img:hover {
+            transform: scale(1.1);
+        }
+.choose-container {
+            display: flex;
+            justify-content: center;
+            gap: 100px;
+        }
+ .choose img {
+            width: 75px;
+            height: auto;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+        .choose img:hover {
+            transform: scale(1.1);
+        }
+        .back-button {
+            position: absolute;
+            bottom: 60px;
+            left: 10px;
+            padding: 10px 50px;
+            font-size: 16px;
+            border: none;
+            border-radius: 50px;
+            background-color: #1F284D;
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .back-button:hover {
+            background-color: #3a4b78;
+        }
+        .read-button {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+        .read-button img {
+            width: 60px;
+            height: 60px;
+        }
+        .footer-image {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 50px;
+            background-image: url('footer-image.png');
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+    </style>
 </head>
-<body style="font-family: Arial, sans-serif; text-align: center; margin: 0; padding: 0; background-color: #ffffff;">
-    <div style="position: absolute; top: 10px; left: 10px; font-size: 24px; font-weight: 900;">Ibettu</div>
+<body>
+    <div class="logo">Ibettu</div>
 
     <!-- Page 1: Language Selection -->
-    <div id="page1" style="margin-top: 15%;">
-        <button onclick="readAloud('Wählen eine Sprache: Deutsch, Kroatisch oder Englisch. Choose a language: German, Croatian, or English. Odaberite jezik: njemački, hrvatski ili engleski.')" 
+     <div id="page1" style="margin-top: 15%;">
+        <button onclick="readAloud('Wählen Sie eine Sprache: Deutsch, Kroatisch oder Englisch. Choose a language: German, Croatian, or English. Odaberite jezik: njemački, hrvatski ili engleski.')" 
                 style="position: absolute; top: 10px; right: 10px; background: none; border: none; cursor: pointer;">
             <img src="sound-icon.svg" alt="Read Aloud" style="width: 60px; height: 60px;">
         </button>
@@ -28,34 +116,35 @@
     </div>
 
     <!-- Page 2: Simple Language Choice -->
-      <div id="page2" style="display: none; margin-top: 15%;">
-        <button id="backButton" onclick="stopAndGoBackToPage1()" style="position: absolute; bottom: 60px; left: 10px; padding: 10px 50px; font-size: 16px; border: none; border-radius: 50px; background-color: #1F284D; color: white; cursor: pointer;">Zurück</button>
-        <button onclick="readAloud(document.getElementById('message').innerText)" style="position: absolute; top: 10px; right: 10px; background: none; border: none; cursor: pointer;">
-            <img src="sound-icon.svg" alt="Read Aloud" style="width: 60px; height: 60px;">
+    <div class="container" id="page2" style="display: none;">
+        <button class="back-button" id="backButton" onclick="stopAndGoBackToPage1()">Zurück</button>
+        <button class="read-button" onclick="readAloud(document.getElementById('message').innerText)">
+            <img src="sound-icon.svg" alt="Read Aloud">
         </button>
         <h1 id="message"></h1>
-        <div style="text-align: center;">
-            <div onclick="goToPage3('simple')" style="margin-bottom: 20px;">
-                <img src="simple-icon.svg" alt="Simple" style="width: 75px; height: auto; cursor: pointer;">
+        <div class="choose-container">
+            <div class="choose" onclick="goToPage3('simple')">
+                <img src="simple-icon.svg" alt="Simple">
             </div>
-            <div onclick="goToPage3('regular')">
-                <img src="regular-icon.svg" alt="Regular" style="width: 75px; height: auto; cursor: pointer;">
+            <div class="choose" onclick="goToPage3('regular')">
+                <img src="regular-icon.svg" alt="Regular">
             </div>
         </div>
     </div>
 
     <!-- Page 3: Final Information -->
-    <div id="page3" style="display: none; margin-top: 15%;">
-        <button onclick="stopAndGoBackToPage2()" style="position: absolute; bottom: 60px; left: 10px; padding: 10px 50px; font-size: 16px; border: none; border-radius: 50px; background-color: #1F284D; color: white; cursor: pointer;">Zurück</button>
-        <button onclick="readAloud(document.getElementById('finalText').innerText)" style="position: absolute; top: 10px; right: 10px; background: none; border: none; cursor: pointer;">
-            <img src="sound-icon.svg" alt="Read Aloud" style="width: 60px; height: 60px;">
+    <div class="container" id="page3" style="display: none;">
+        <button class="back-button" onclick="stopAndGoBackToPage2()">Zurück</button>
+        <button class="read-button" onclick="readAloud(document.getElementById('finalText').innerText)">
+            <img src="sound-icon.svg" alt="Read Aloud">
         </button>
         <h1 id="finalMessage"></h1>
-        <p id="finalText" style="text-align: left; margin: 0 10%;"></p>
+        <p id="finalText"></p>
     </div>
 
+    <div class="footer-image"></div>
+
     <script>
-        let language;
         let speechSynthesisUtterance;
 
         function goToPage2(selectedLanguage) {
@@ -88,61 +177,15 @@
             const content = {
                 de: {
                     simple: 'Ibumetin hilft bei Schmerzen und Fieber.',
-                    regular: `<h2>1. Was ist Ibettu und wofür wird es angewendet?</h2>
-    <p>Eine <strong>Ibettu forte 400 mg</strong> - Filmtablette enthält als Wirkstoff 400 mg Ibuprofen.  
-        Ibuprofen gehört zu einer Gruppe von Arzneimitteln, die man nicht-steroidale entzündungshemmende Arzneimittel (nicht-steroidale Analgetika/Antirheumatika (NSAR)) nennt.  
-        Diese Arzneimittel haben schmerzstillende, entzündungshemmende und fiebersenkende Wirkung.</p>
-
-    <p><strong>Ibettu wird angewendet:</strong></p>
-    <ul>
-        <li>zur Linderung von leichten bis mäßig starken Schmerzen (wie z. B. Kopfschmerzen, Zahnschmerzen und Regelschmerzen);</li>
-        <li>zur Linderung von Schmerzen und Fieber bei Erkältungen.</li>
-    </ul>
-    <p>Wenn Sie sich nach 3-4 Tagen nicht besser oder gar schlechter fühlen, wenden Sie sich an Ihren Arzt.</p>
-
-    <h2>2. Was sollten Sie vor der Einnahme von Ibettu beachten?</h2>
-    <h3>Ibettu darf nicht eingenommen werden,</h3>
-    <ul>
-        <li>wenn Sie allergisch gegen Ibuprofen oder einen der in Abschnitt 6 genannten sonstigen Bestandteile dieses Arzneimittels sind.</li>
-        <li>wenn Sie nach der Anwendung von Acetylsalicylsäure oder anderer ähnlicher Schmerzmittel (NSAR) jemals an Atemnot, Asthma, einer rinnenden Nase, Schwellungen oder Nesselausschlägen gelitten haben.</li>
-        <li>wenn Sie an Gehirnblutungen (zerebrovaskulärer Blutung) oder anderen aktiven Blutungen leiden.</li>
-        <li>wenn Sie ein Magen-/Dünndarm-Geschwür oder eine Magen-/Darm-Blutung haben (oder zwei oder mehr Episoden solcher hatten).</li>
-        <li>wenn Sie bei einer früheren Einnahme von NSAR Magen-/Darm-Blutungen oder einen Durchbruch (Perforation) hatten.</li>
-        <li>wenn Sie schwere Leber-, Nieren- oder Herzinsuffizienz (schwere Funktionsstörungen) haben.</li>
-        <li>wenn Sie an einer ungeklärten Störung der Blutbildung leiden.</li>
-        <li>wenn Sie an einer Tendenz zu unkontrollierten Blutungen (Hämorrhagien) oder Störungen der Blutgerinnung (Koagulation) leiden.</li>
-        <li>wenn Sie an schwerer Dehydration (Austrocknung des Körpers verursacht durch Erbrechen, Durchfall oder unzureichender Flüssigkeitsaufnahme) leiden.</li>
-        <li>wenn Sie in den letzten drei Monaten der Schwangerschaft sind.</li>
-        <li>von Kindern unter 6 Jahren oder 20 kg Körpergewicht.</li>
-    </ul>
-
-    <h3>Warnhinweise und Vorsichtsmaßnahmen</h3>
-   
-        <p><strong>Bitte sprechen Sie mit Ihrem Arzt oder Apotheker, bevor Sie Ibettu einnehmen,</strong></p>
-        <ul>
-            <li>wenn Sie einen systemischen Lupus erythematodes (SLE) oder eine Mischkollagenose haben.</li>
-            <li>wenn Sie eine vererbte Störung der Blutbildung (akute intermittierende Porphyrie) oder Probleme mit Ihrer Blutgerinnung haben.</li>
-            <li>wenn Sie eine Darmerkrankung (ulzerative Colitis oder Morbus Crohn) haben oder jemals gehabt haben.</li>
-            <li>wenn Sie jemals Bluthochdruck und/oder eine Herzinsuffizienz gehabt haben.</li>
-            <li>wenn Sie eine verminderte Nierenfunktion haben. Bei Kindern und Jugendlichen mit Flüssigkeitsmangel (Dehydrierung) besteht das Risiko einer Nierenfunktionsstörung.</li>
-            <li>wenn Sie Leberprobleme haben.</li>
-            <li>wenn Sie sich vor Kurzem einer großen Operation unterzogen haben.</li>
-            <li>wenn Sie Asthma oder eine allergische Erkrankung haben oder gehabt haben, da Atemnot auftreten kann.</li>
-            <li>wenn Sie an Heuschnupfen, Nasenpolypen oder chronischen obstruktiven Atemwegserkrankungen leiden, da ein erhöhtes Risiko für allergische Reaktionen besteht.</li>
-            <li>wenn Sie andere Arzneimittel einnehmen, die das Risiko für Geschwürbildung oder Blutungen erhöhen, wie z. B. orale Corticosteroide, Arzneimittel zur Blutverdünnung (wie Warfarin), selektive Serotonin-Wiederaufnahme-Hemmer oder Gerinnungshemmer wie Acetylsalicylsäure.</li>
-        </ul>
-
-    <p>Durch Anwendung der minimal wirksamen Dosis über die kürzeste Zeit wird das Vorkommen von Nebenwirkungen minimiert. Bei älteren Patienten besteht ein erhöhtes Risiko für Nebenwirkungen.</p>
-
-    <p>Die Einnahme von Ibettu in Kombination mit anderen NSAR, einschließlich Cyclooxygenase-2-spezifischen Hemmern, kann das Risiko für Nebenwirkungen erhöhen und sollte vermieden werden.</p>`
+                    regular: 'Ibumetin forte 400 mg enthält Ibuprofen.'
                 },
                 hr: {
                     simple: 'Ibumetin pomaže kod bolova i vrućice.',
-                    regular: 'Langer regulärer kroatischer Text.'
+                    regular: 'Ibumetin forte 400 mg sadrži ibuprofen.'
                 },
                 en: {
                     simple: 'Ibumetin helps with pain and fever.',
-                    regular: 'Long regular English text.'
+                    regular: 'Ibumetin forte 400 mg contains ibuprofen.'
                 }
             };
 
@@ -182,5 +225,3 @@
     </script>
 </body>
 </html>
-
-
